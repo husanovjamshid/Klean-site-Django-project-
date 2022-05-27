@@ -4,24 +4,6 @@
 {% block content %}
 
 
-{#    <div class="container-fluid py-5">#}
-{#        <div class="container">#}
-{#            <div class="row align-items-end mb-4">#}
-{#                <div class="col-lg-12">#}
-{#                    <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">Latest Blog</h6>#}
-{#                    <h1 class="section-title mb-3">{{ posts.title }}</h1>#}
-{#                    <hr>#}
-{#                    <p>{{ posts.text | safe}}</p>#}
-{#                </div>#}
-{##}
-{#            </div>#}
-{##}
-{#        </div>#}
-{#    </div>#}
-{#    <!-- Blog End -->#}
-
-
-
      <!-- Page Header Start -->
     <div class="container-fluid bg-primary py-5 mb-5">
         <div class="container py-5">
@@ -31,7 +13,7 @@
                 </div>
                 <div class="col-md-6 text-center text-md-right">
                     <div class="d-inline-flex align-items-center">
-                        <a class="btn btn-sm btn-outline-light" href="">Home</a>
+                        <a class="btn btn-sm btn-outline-light" href="{% url 'index' %}">Home</a>
                         <i class="fas fa-angle-double-right text-light mx-2"></i>
                         <a class="btn btn-sm btn-outline-light disabled" href="">Detail Page</a>
                     </div>
@@ -49,18 +31,23 @@
                 <div class="col-lg-8">
                     <div class="mb-5">
                         <div class="d-flex mb-2">
-                            <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                            <span class="text-primary px-2">|</span>
-                            <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                            <span class="text-primary px-2">|</span>
-                            <a class="text-secondary text-uppercase font-weight-medium" href="">{{ posts.date }}</a>
+                            <small><a class="text-success font-weight-bold" style="font-family: sans-serif" href="">{{ posts.cat_id }}</a></small>
+                            <small class="text-primary px-2">|</small>
+                            <small><a class="text-muted fw-bold " href="">{{ posts.date }}</a></small>
+                            <small class="text-primary px-2">|</small>
+                            <small><a class="text-muted fw-bold " href=""><i class="fa-solid fa-eye mr-1"></i> {{ posts.view_count }}</a></small>
+
                         </div>
                         <h2 class="section-title mb-3">{{ posts.title }}</h2>
                     </div>
 
+
+
                     <div class="mb-5">
+{#                        <h5 class="postShort">{{ posts.shorttext }}</h5>#}
+                        <br>
                         <img class="img-fluid rounded w-100 mb-4" src="{{ posts.get_image }}" alt="Image">
-                        <p>{{ posts.text }}</p>
+                        <p style="line-height: 30px;color: black;font-family: Arial">{{ posts.text | safe}}</p>
 
                     </div>
 
@@ -68,7 +55,7 @@
                         <h3 class="mb-4 section-title">Comments</h3>
                         {% for item in comment %}
                             <div class="media mb-4">
-                            <img src="{{ item.get_image | safe}}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1" style="width: 45px;">
+                            <img src="{{ item.get_image | safe}}" alt="Image" class="img-fluid rounded-circle mr-3 mt-1" style="width: 45px;border-radius: 50%">
                             <div class="media-body">
                                 <h6>{{ item.title }} <small class="ml-3 font-weight-bold text-muted">{{ item.time }}</small></h6>
                                 <p>{{ item.text | safe}}</p>
@@ -109,13 +96,13 @@
                 </div>
 
                 <div class="col-lg-4 mt-5 mt-lg-0">
-                    <div class="d-flex flex-column text-center bg-secondary rounded mb-5 py-5 px-4">
-                        <img src="img/user.jpg" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
-                        <h3 class="text-white mb-3">John Doe</h3>
-                        <p class="text-white m-0">Conset elitr erat vero dolor ipsum et diam, eos dolor lorem ipsum,
-                            ipsum
-                            ipsum sit no ut est. Guber ea ipsum erat kasd amet est elitr ea sit.</p>
-                    </div>
+{#                    <div class="d-flex flex-column text-center bg-secondary rounded mb-5 py-5 px-4">#}
+{#                        <img src="{{ posts.get_image }}" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">#}
+{#                        <h4 class="text-white mb-3">Husanov JamshidBek</h4>#}
+{#                        <p class="text-white m-0">Conset elitr erat vero dolor ipsum et diam, eos dolor lorem ipsum,#}
+{#                            ipsum#}
+{#                            ipsum sit no ut est. Guber ea ipsum erat kasd amet est elitr ea sit.</p>#}
+{#                    </div>#}
                     <div class="mb-5">
                         <div class="w-100">
                             <div class="input-group">
@@ -129,53 +116,42 @@
                     <div class="mb-5">
                         <h3 class="mb-4 section-title">Categories</h3>
                         <ul class="list-inline m-0">
-                            <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                <a class="text-dark" href="#"><i class="fa fa-angle-right text-secondary mr-2"></i>Web Design</a>
+                            {% for item in cat %}
+                                <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
+                                <a class="text-dark" href="#"><i class="fa fa-angle-right text-secondary mr-2"></i>{{ item.name }}</a>
                                 <span class="badge badge-primary badge-pill">150</span>
                             </li>
-                            <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                <a class="text-dark" href="#"><i class="fa fa-angle-right text-secondary mr-2"></i>Web Development</a>
-                                <span class="badge badge-primary badge-pill">131</span>
-                            </li>
-                            <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                <a class="text-dark" href="#"><i class="fa fa-angle-right text-secondary mr-2"></i>Online Marketing</a>
-                                <span class="badge badge-primary badge-pill">78</span>
-                            </li>
-                            <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                <a class="text-dark" href="#"><i class="fa fa-angle-right text-secondary mr-2"></i>Keyword Research</a>
-                                <span class="badge badge-primary badge-pill">56</span>
-                            </li>
-                            <li class="py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                <a class="text-dark" href="#"><i class="fa fa-angle-right text-secondary mr-2"></i>Email Marketing</a>
-                                <span class="badge badge-primary badge-pill">98</span>
-                            </li>
+                            {% endfor %}
+
                         </ul>
                     </div>
                     <div class="mb-5">
-                        <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
+                         <img src="{% static 'img/blog-1.jpg' %}" alt="" class="img-fluid rounded">
                     </div>
                     <div class="mb-5">
                         <h3 class="mb-4 section-title">Recent Post</h3>
-                      {% for item in news %}
-                          <div class="d-flex align-items-center border-bottom mb-3 pb-3">
-                            <img class="img-fluid rounded" src="{{ item.get_image }}" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                            <div class="d-flex flex-column pl-3">
-                                <a class="text-dark mb-2" href="">{{ item.title }}</a>
-                                <div class="d-flex">
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a></small>
-                                    <small class="text-primary px-2">|</small>
-                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a></small>
-{#                                    <small class="text-primary px-2">|</small>#}
-{#                                    <small><a class="text-secondary text-uppercase font-weight-medium" href="">{{ item.date }}</a></small>#}
 
+                      {% for post in post_2 %}
+
+                          <div class="d-flex align-items-center border-bottom mb-3 pb-3">
+                            <img href="{% url 'blog_detail' post.id %} " class="img-fluid rounded" src="{{ post.get_image }}" style="width: 80px; height: 80px; object-fit: cover;cursor:pointer;" alt="">
+                            <div class="d-flex flex-column pl-3">
+                                 <div class="d-flex">
+                                    <small><a class="text-success font-weight-bold" style="font-family: sans-serif" href="">{{ post.cat_id }}</a></small>
+                                    <small class="text-primary px-2">|</small>
+                                    <small><a class="text-muted fw-bold " href="">{{ post.date }}</a></small>
+                                    <small class="text-primary px-2">|</small>
+                                    <small><a class="text-muted fw-bold " href=""><i class="fa-solid fa-eye mr-1"></i> {{ post.view_count }}</a></small>
                                 </div>
+                                <a class="text-dark mb-2 font-weight-bold mt-1" href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
+
                             </div>
                         </div>
                       {% endfor %}
 
                     </div>
                     <div class="mb-5">
-                        <img src="img/blog-2.jpg" alt="" class="img-fluid rounded">
+                        <img src="{% static 'img/blog-2.jpg' %}" alt="" class="img-fluid rounded">
                     </div>
                     <div class="mb-5">
                         <h3 class="mb-4 section-title">Tag Cloud</h3>
@@ -189,7 +165,7 @@
                         </div>
                     </div>
                     <div class="mb-5">
-                        <img src="img/blog-3.jpg" alt="" class="img-fluid rounded">
+                        <img src="{% static 'img/blog-3.jpg' %}" alt="" class="img-fluid rounded">
                     </div>
                     <div>
                         <h3 class="mb-4 section-title">Plain Text</h3>

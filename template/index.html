@@ -379,7 +379,7 @@
                     <div class="owl-carousel testimonial-carousel position-relative">
                         <div class="d-flex flex-column text-white">
                             <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid" src="img/testimonial-1.jpg" alt="">
+                                <img class="img-fluid" src="{% static 'img/testimonial-1.jpg' %}" alt="">
                                 <div class="ml-3">
                                     <h5 class="text-primary">Client Name</h5>
                                     <i>Profession</i>
@@ -389,7 +389,7 @@
                         </div>
                         <div class="d-flex flex-column text-white">
                             <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid" src="img/testimonial-2.jpg" alt="">
+                                <img class="img-fluid" src="{% static 'img/testimonial-2.jpg' %}" alt="">
                                 <div class="ml-3">
                                     <h5 class="text-primary">Client Name</h5>
                                     <i>Profession</i>
@@ -399,7 +399,7 @@
                         </div>
                         <div class="d-flex flex-column text-white">
                             <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid" src="img/testimonial-3.jpg" alt="">
+                                <img class="img-fluid" src="{% static 'img/testimonial-3.jpg' %}" alt="">
                                 <div class="ml-3">
                                     <h5 class="text-primary">Client Name</h5>
                                     <i>Profession</i>
@@ -411,7 +411,7 @@
                 </div>
                 <div class="col-lg-5" style="min-height: 400px;">
                     <div class="position-relative h-100 rounded overflow-hidden">
-                        <img class="position-absolute w-100 h-100" src="img/testimonial.jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="{% static 'img/testimonial.jpg' %}" style="object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -436,21 +436,28 @@
                 {% for post in posts %}
                     <div class="col-lg-4 col-md-6 mb-5">
                     <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="{{ post.get_image }}" alt="">
+                        <a style="cursor: pointer" href="{% url 'blog_detail' post.id %}">
+                             <img class="img-fluid rounded w-100" style="min-height: 42vh" src="{{ post.get_image }}" alt="">
+                        </a>
                         <div class="blog-date">
                             <h4 class="font-weight-bold mb-n1">01</h4>
                             <small class="text-white text-uppercase">Jan</small>
                         </div>
                     </div>
                     <div class="d-flex mb-2">
-                        <a class="text-secondary  font-weight-medium" href="">Admin</a>
-                        <span class="text-primary px-2">|</span>
-                        <a class="text-secondary font-weight-medium" href="">{{ post.date }}</a>
+
+                            <small><a class="text-success font-weight-bold" style="font-family: sans-serif" href="">{{ post.cat_id }}</a></small>
+                            <small class="text-primary px-2">|</small>
+                            <small><a class="text-muted fw-bold " href="">{{ post.date }}</a></small>
+                            <small class="text-primary px-2">|</small>
+                            <small><a class="text-muted fw-bold " href=""><i class="fa-solid fa-eye mr-1"></i> {{ post.view_count }}</a></small>
+
                     </div>
-                         <div class="titleBlog">
-                             <a href="{% url 'blog_detail' post.id %}" class="font-weight-medium mb-2 ">{{ post.title }}</a>
+                        <div class="titleBlog">
+                             <span><a href="{% url 'blog_detail' post.id %}" class=" mb-2 ">{{ post.title }}</a></span>
+                        <br><br>
+                           <p class="mb-4 ">{{ post.shorttext }}</p>
                          </div>
-                    <p class="mb-4 text-dark">{{ post.shorttext }}</p>
                     <a class="btn btn-sm btn-primary py-2" href="{% url 'blog_detail' post.id %}">Batafsil</a>
                 </div>
                 {% endfor %}

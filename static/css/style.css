@@ -53,9 +53,46 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+
+element.style {
+}
+.single-layout__center.slc {
+    width: -webkit-calc(100% - 540px);
+    width: calc(100% - 540px);
+}
+.single-layout__center {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+}
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.outer-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Franklin Gothic Medium";
+  letter-spacing: 0;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -63,6 +100,7 @@ body {
   text-align: left;
   background-color: #fff;
 }
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;

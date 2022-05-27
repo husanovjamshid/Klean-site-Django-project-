@@ -38,21 +38,22 @@
                {% for post in posts %}
                      <div class="col-lg-4 col-md-6 mb-5">
                     <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="{{ post.get_image }}" alt="">
+                        <a href="{% url 'blog_detail' post.id %}"><img style="min-height: 42vh" class="img-fluid rounded w-100" src="{{ post.get_image }}" alt=""></a>
 
                     </div>
                     <div class="d-flex mb-2">
-                        <a class="text-secondary text-uppercase font-weight-medium" href="">Admin</a>
-                        <span class="text-primary px-2">|</span>
-                        <a class="text-secondary text-uppercase font-weight-medium" href="">Cleaning</a>
-                        <span class="text-primary px-2">|</span>
-                        <a class="text-secondary text-uppercase font-weight-medium" href="">{{ post.date }}</a>
-                    </div>
-                         <div class="titleBlog">
-                             <a href="{% url 'blog_detail' post.id %}" class="font-weight-medium mb-2 ">{{ post.title }}</a>
-                         </div>
+                        <small><a class="text-success font-weight-bold" style="font-family: sans-serif" href="">{{ post.cat_id }}</a></small>
+                        <small class="text-primary px-2">|</small>
+                        <small><a class="text-muted fw-bold " href="">{{ post.date }}</a></small>
+                        <small class="text-primary px-2">|</small>
+                        <small><a class="text-muted fw-bold " href=""><i class="fa-solid fa-eye mr-1"></i> {{ post.view_count }}</a></small>
 
-                    <p class="mb-4 text-dark">{{ post.shorttext }}</p>
+                    </div>
+                      <div class="titleBlog">
+                             <span><a href="{% url 'blog_detail' post.id %}" class=" mb-2 ">{{ post.title }}</a></span>
+                        <br><br>
+                           <p class="mb-4 ">{{ post.shorttext }}</p>
+                      </div>
                     <a class="btn btn-sm btn-primary py-2" href="{% url 'blog_detail' post.id %}">Ko'proq o'qish</a>
                 </div>
                 {% endfor %}

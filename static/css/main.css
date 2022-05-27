@@ -1,5 +1,26 @@
-.titleBlog a{
+.titleBlog span a{
   text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all .5s;
+  line-height: 12px;
+  font-family: sans-serif;
+}
+
+.titleBlog span:hover a{
   color: blue;
   cursor: pointer;
+}
+
+.titleBlog p{
+  font-weight: 200;
+  font-family: sans-serif;
+  color: black;
+
+}
+
+.container .postShort{
+  color: red;
 }
