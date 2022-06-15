@@ -26,6 +26,13 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    <style>
+        .alert-error{
+            background-color:#f8d7da;
+            color: #4c4747;
+        }
+    </style>
 </head>
 
 <body>
@@ -89,7 +96,7 @@
 
                                     <a href="{% url 'blog' %}" class="dropdown-item">Latest Blog</a>
 
-{#                                    <a href="{% url 'blog'%}" class="dropdown-item"> Blog</a>#}
+{#                                    <a href="{% url 'blog_detail' post.id %}" class="dropdown-item"> Blog</a>#}
 
                                 </div>
                             </div>
@@ -111,7 +118,7 @@
     <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
-                <a href="index.html" class="navbar-brand">
+                <a href="{% url 'index' %}" class="navbar-brand">
                     <h1 class="m-0 mt-n3 display-4 text-primary">Klean</h1>
                 </a>
                 <p>Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
@@ -158,7 +165,7 @@
     <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: #3E3E4E !important;">
         <div class="row">
             <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white">&copy; <a href="#">Your Site Name</a>. All Rights Reserved. Designed by <a href="https://htmlcodex.com">HTML Codex</a>
+                <p class="m-0 text-white">&copy; <a href="#">KLEAN</a>. All Rights Reserved. Designed by <a href="https://htmlcodex.com">HTML Codex</a>
                 </p>
             </div>
             <div class="col-lg-6 text-center text-md-right">

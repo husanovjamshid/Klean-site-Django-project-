@@ -118,7 +118,7 @@
                         <ul class="list-inline m-0">
                             {% for item in cat %}
                                 <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                <a class="text-dark" href="#"><i class="fa fa-angle-right text-secondary mr-2"></i>{{ item.name }}</a>
+                                <a class="text-dark" href="{% url 'category' item.id %}"><i class="fa fa-angle-right text-secondary mr-2"></i>{{ item.name }}</a>
                                 <span class="badge badge-primary badge-pill">150</span>
                             </li>
                             {% endfor %}
@@ -137,9 +137,9 @@
                             <img href="{% url 'blog_detail' post.id %} " class="img-fluid rounded" src="{{ post.get_image }}" style="width: 80px; height: 80px; object-fit: cover;cursor:pointer;" alt="">
                             <div class="d-flex flex-column pl-3">
                                  <div class="d-flex">
-                                    <small><a class="text-success font-weight-bold" style="font-family: sans-serif" href="">{{ post.cat_id }}</a></small>
+                                    <small><p class="text-success font-weight-bold" style="font-family: sans-serif">{{ post.cat_id }}</p></small>
                                     <small class="text-primary px-2">|</small>
-                                    <small><a class="text-muted fw-bold " href="">{{ post.date }}</a></small>
+                                    <small><p class="text-muted fw-bold " >{{ post.date }}</p></small>
                                     <small class="text-primary px-2">|</small>
                                     <small><a class="text-muted fw-bold " href=""><i class="fa-solid fa-eye mr-1"></i> {{ post.view_count }}</a></small>
                                 </div>

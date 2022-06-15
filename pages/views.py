@@ -1,5 +1,6 @@
+from django.contrib import messages
 from django.shortcuts import render
-from .models import Post, Comment, Category
+from .models import Post, Comment, Category, Contact, CategoryImg, PostImg
 # Create your views here.
 
 def index(req):
@@ -20,13 +21,9 @@ def service(req):
     posts = Post.objects.all()
     return render(req, 'service.html')
 
-def project(req):
-    posts = Post.objects.all()
-    return render(req, 'project.html')
 
-def contact(req):
-    posts = Post.objects.all()
-    return render(req, 'contact.html')
+
+
 
 def blog(req):
     posts = Post.objects.all()
@@ -62,6 +59,55 @@ def blog_detail(req, id):
                       'comment': comment,
                       'post_2': post_2,
                       'cat': cat,
+
+
+                  })
+
+def project(request):
+    catImg = CategoryImg.objects.all()
+    posts = PostImg.objects.all()
+
+    return render(request, 'project.html',
+                  context={
+                      'catImg':catImg,
+                      'posts':posts
+                  })
+
+
+
+def contact(request):
+    contact = Contact()
+
+    if request.method == 'POST':
+        try:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            subject = request.POST.get('subject')
+            message = request.POST.get('message')
+            contact.name = name
+            contact.email = email
+            contact.subject = subject
+            contact.message = message
+            contact.save()
+
+
+            messages.success(request, 'Xabaringiz muvaffaqqiyatli yetkazildi!!!')
+        except:
+            messages.error(request, 'Xabaringiz yuborilmadi!!!')
+
+
+    return render(request, 'contact.html',
+                  context={
+
+                  }
+                  )
+
+def category(req, id):
+    posts = Post.objects.filter(cat_id=id)
+
+    return render(req, 'category.html',
+                  context={
+                      'posts': posts,
 
 
                   })

@@ -33,121 +33,35 @@
                 <div class="col-lg-6 text-center text-lg-right">
                     <ul class="list-inline mb-2" id="portfolio-flters">
                         <li class="btn btn-sm btn-outline-primary m-1 active"  data-filter="*">All</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Complete</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Running</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">Upcoming</li>
+                        {% for cat in catImg %}
+                             <li class="btn btn-sm btn-outline-primary m-1" data-filter=".{{ cat.imgName }}">{{ cat.imgName }}</li>
+                        {% endfor %}
+
                     </ul>
                 </div>
             </div>
             <div class="row m-0 portfolio-container">
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
+                {% for items in posts %}
+                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item p-1 {{ items.cat_id }}">
                     <div class="position-relative overflow-hidden">
                         <div class="portfolio-img">
-                            <img class="img-fluid w-100" src="{% static 'img/portfolio-1.jpg' %}" alt="">
+                            <img style="max-height: 200px" class="img-fluid min-vh-25 w-100" src="{{ items.get_image }}" alt="">
                         </div>
                         <div class="portfolio-text bg-primary">
-                            <h4 class="font-weight-bold mb-4">Project Name</h4>
+                            <h4 class="font-weight-bold mb-4">{{ items.cat_id }}</h4>
                             <div class="d-flex align-items-center justify-content-center">
                                 <a class="btn btn-sm btn-secondary m-1" href="">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <a class="btn btn-sm btn-secondary m-1" href="{% static 'img/portfolio-1.jpg' %}" data-lightbox="portfolio">
+                                <a class="btn btn-sm btn-secondary m-1" href="{{ items.get_image }}" data-lightbox="portfolio">
                                     <i class="fa fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item second">
-                    <div class="position-relative overflow-hidden">
-                        <div class="portfolio-img">
-                            <img class="img-fluid w-100" src="{% static 'img/portfolio-2.jpg' %}" alt="">
-                        </div>
-                        <div class="portfolio-text bg-primary">
-                            <h4 class="font-weight-bold mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-sm btn-secondary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-sm btn-secondary m-1" href="{% static 'img/portfolio-2.jpg' %}" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item third">
-                    <div class="position-relative overflow-hidden">
-                        <div class="portfolio-img">
-                            <img class="img-fluid w-100" src="{% static 'img/portfolio-3.jpg' %}" alt="">
-                        </div>
-                        <div class="portfolio-text bg-primary">
-                            <h4 class="font-weight-bold mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-sm btn-secondary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-sm btn-secondary m-1" href="{% static 'img/portfolio-3.jpg' %}" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
-                    <div class="position-relative overflow-hidden">
-                        <div class="portfolio-img">
-                            <img class="img-fluid w-100" src="{% static 'img/portfolio-4.jpg' %}" alt="">
-                        </div>
-                        <div class="portfolio-text bg-primary">
-                            <h4 class="font-weight-bold mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-sm btn-secondary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-sm btn-secondary m-1" href="{% static 'img/portfolio-4.jpg' %}" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item second">
-                    <div class="position-relative overflow-hidden">
-                        <div class="portfolio-img">
-                            <img class="img-fluid w-100" src="{% static 'img/portfolio-5.jpg' %}" alt="">
-                        </div>
-                        <div class="portfolio-text bg-primary">
-                            <h4 class="font-weight-bold mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-sm btn-secondary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-sm btn-secondary m-1" href="{% static 'img/portfolio-5.jpg' %}" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item third">
-                    <div class="position-relative overflow-hidden">
-                        <div class="portfolio-img">
-                            <img class="img-fluid w-100" src="{% static 'img/portfolio-6.jpg' %}" alt="">
-                        </div>
-                        <div class="portfolio-text bg-primary">
-                            <h4 class="font-weight-bold mb-4">Project Name</h4>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-sm btn-secondary m-1" href="">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="btn btn-sm btn-secondary m-1" href="{% static 'img/portfolio-6.jpg' %}" data-lightbox="portfolio">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </div>
         </div>
