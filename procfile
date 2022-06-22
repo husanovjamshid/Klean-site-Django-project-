@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 web: gunicorn config.wsgi --log-file -
+=======
+web: gunicorn config.wsgi  --log-file -
+>>>>>>> 7893b7e144131bd54d4767e828bd6ba312e0c63f
