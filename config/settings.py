@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-evfc3*sv89*qvg@*66qyna6fk*10q%vul_t7%*eq=m%+^$)9st
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['127.0.0.1','afternoon-gorge-78725.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1','kleansite.herokuapp.com/']
 
 
 
